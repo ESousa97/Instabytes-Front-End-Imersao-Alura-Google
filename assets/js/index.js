@@ -8,56 +8,84 @@ modal.style.display = "none";
 
 const imageGrid = document.querySelector(".image-grid");
 
+// Função para validar URLs
+function isValidImageUrl(url) {
+  return url && (url.startsWith("http://") || url.startsWith("https://"));
+}
+
+// Função para normalizar URLs inválidas
+function normalizeImageUrl(url) {
+  if (!isValidImageUrl(url)) {
+    return "https://via.placeholder.com/300x200?text=Imagem+Indisponível";
+  }
+  return url;
+}
+
 // Função para buscar e exibir os dados do endpoint
 async function displayImages() {
-  const data = await fetchImages();
-    try {
-        const postsList = data.map(item => {
-          return `
-            <article data-description="${item.descricao}">
-              <figure>
-                <img src="${item.imgUrl}" alt="${item.alt}" />
-              </figure>
-            </article>
-          `
-        }).join('');
-        imageGrid.insertAdjacentHTML('beforeend', postsList)
+  try {
+    const data = await fetchImages();
 
-        // Adicionando eventos de clique para cada imagem carregada
-        addImageClickEvents();
-    } catch (error) {
-        console.error("Erro ao popular página", error);
+    // Logar URLs inválidas
+    data.forEach(item => {
+      if (!isValidImageUrl(item.imgUrl)) {
+        console.warn(`URL inválida detectada: ${item.imgUrl}`);
+      }
+    });
+
+    const postsList = data
+      .map(item => {
+        const normalizedUrl = normalizeImageUrl(item.imgUrl);
+        return `
+          <article data-description="${item.descricao}">
+            <figure>
+              <img src="${normalizedUrl}" alt="${item.alt || 'Imagem sem descrição'}" loading="lazy" />
+            </figure>
+          </article>
+        `;
+      })
+      .join('');
+
+    if (!postsList) {
+      imageGrid.innerHTML = "<p>Nenhuma imagem disponível para exibir.</p>";
+    } else {
+      imageGrid.insertAdjacentHTML('beforeend', postsList);
+      addImageClickEvents();
     }
+  } catch (error) {
+    console.error("Erro ao popular página", error);
+    imageGrid.innerHTML = "<p>Erro ao carregar as imagens.</p>";
+  }
 }
 
 // Função para adicionar os eventos de clique às imagens
 function addImageClickEvents() {
-    const images = document.querySelectorAll(".image-grid img");
-    images.forEach(img => {
-        img.addEventListener("click", function () {
-            captionText.textContent = "";
-            modal.style.display = "block";
-            modalImg.src = this.src;
+  const images = document.querySelectorAll(".image-grid img");
+  images.forEach(img => {
+    img.addEventListener("click", function () {
+      captionText.textContent = "";
+      modal.style.display = "block";
+      modalImg.src = this.src;
 
-            const article = this.closest("article");
-            const description = article ? article.dataset.description : '';
-            const caption = description || this.alt;
+      const article = this.closest("article");
+      const description = article ? article.dataset.description : '';
+      const caption = description || this.alt;
 
-            captionText.innerHTML = `<p>${caption}</p>`;
-        });
+      captionText.innerHTML = `<p>${caption}</p>`;
     });
+  });
 }
 
 // Evento de fechar o modal
 closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
+  modal.style.display = "none";
 });
 
 // Fechar o modal clicando fora dele
 window.addEventListener("click", function (event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
 });
 
 // Chamar a função para buscar e exibir as imagens ao carregar a página
