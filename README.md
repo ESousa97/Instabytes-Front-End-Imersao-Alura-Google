@@ -1,51 +1,86 @@
-# Alura - Imersão back-end
+# Imersão Alura Back End com Google Gemini - Front End
 
-Este é o repositório do front-end do projeto.
+*Este repositório contém o código front-end do projeto desenvolvido durante a [Imersão Alura Back End com Google Gemini](https://github.com/ESousa97/Instabytes-Imersao-Alura-Google).*
 
-**IMPORTANTE:** É necessário ter o [Node.js](https://nodejs.org/) instalado em seu computador antes de executar os comandos de instalação e execução do projeto. Versão recomendada: v20.x.x.
+---
 
-## PASSO 1: Baixe o código do projeto:
+## Funcionalidades
 
-### Opção 1 - Clonando o repositório para o seu perfil no GitHub
+Este projeto possui as seguintes funcionalidades:
+- Interface interativa e responsiva;
+- Consumo de APIs para exibição dinâmica de dados;
+- Compatibilidade com navegadores modernos.
 
-> Para utilizar essa opção é necessário ter o [Git](https://git-scm.com/downloads) instalado e configurado em seu computador. Caso não esteja instalado ou você não tenha certeza, prossiga com a **opção 2** e baixe o .zip do projeto.
+**Requisitos:**
+- [Node.js](https://nodejs.org/) versão recomendada: v20.x.x ou superior;
+- [Git](https://git-scm.com/downloads) (opcional para clonar o repositório).
 
-1. Faça o **fork** do projeto clicando no botão **Fork** na parte superior direita da página;
-2. Faça o **clone** do repositório para seu computador:
-  - Clique no botão **<> Code** e copie o endereço remoto do repositório;
-  - Abra o terminal, navegue até a pasta raiz onde deseja baixar o projeto e execute o comando `git clone <endereço remoto>`;
-  - Você pode acessar a pasta do projeto direto pelo Visual Studio Code, clicando em File > Open Folder e selecionando a pasta do projeto.
+---
 
-### Opção 2 - Baixando um arquivo .zip
+## Configuração e Execução do Projeto
 
-1. clique no botão **<> Code** e, em seguida, no botão **Download ZIP**;
-2. uma pasta zipada será baixada para a pasta de downloads determinada pelo seu navegador;
-3. descompacte os arquivos clicando no ícone da pasta zipada e transfira os arquivos para a pasta de projetos de sua preferência.
+### Passo 1: Baixe o Código do Projeto
 
+#### Opção 1: Clonar o Repositório
+1. Faça um **fork** do projeto clicando no botão **Fork** no canto superior direito da página do repositório no GitHub.
+2. **Clone** o repositório para sua máquina:
+   - Clique no botão **<> Code** e copie o endereço remoto do repositório.
+   - No terminal, navegue até a pasta onde deseja salvar o projeto e execute:
+     ```bash
+     git clone <endereço-remoto>
+     ```
+   - Abra o projeto no Visual Studio Code: **File > Open Folder** e selecione a pasta clonada.
 
-## PASSO 2: Instale o projeto:
+#### Opção 2: Baixar como .zip
+1. Clique no botão **<> Code** e selecione **Download ZIP**.
+2. Extraia os arquivos para uma pasta de sua preferência.
 
-### Opção 1 - Utilizando o terminal do Visual Studio Code
+---
 
-1. Abra a pasta do projeto no Visual Studio Code clicando em File > Open Folder e selecionando a pasta do projeto;
-2. Clique em Terminal > New Terminal no menu superior do Visual Studio Code. O terminal deve abrir já direcionando para a pasta correta do projeto;
-3. Execute o comando `npm install` e aguarde a finalização.
+### Passo 2: Instale as Dependências
 
-### Opção 2 - Utilizando outros terminais
+#### Usando o Terminal do Visual Studio Code:
+1. Abra a pasta do projeto no Visual Studio Code: **File > Open Folder**.
+2. Abra o terminal: **Terminal > New Terminal**.
+3. Execute o comando:
+   ```bash
+   npm install
+   ```
+#### Usando Outros Terminais:
 
-1. Abra o terminal de sua preferência e navegue até a pasta do projeto, utilizando os comandos de navegação como `cd <pasta>`;
-2. Com o prompt apontando para a raiz da pasta do projeto, execute o comando `npm install` e aguarde a finalização.
+1. Navegue até a pasta do projeto no terminal:
 
-## PASSO 3: Execute o projeto para subir o servidor local:
+    ```bash
+    cd <caminho-da-pasta>
+    ```
+2. Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-Acesse o terminal (do Visual Studio Code ou outro), certifique-se que esteja exibindo a pasta correta do projeto e execute o comando `npm run dev`. O terminal deverá retornar:
+#### Passo 3: Execute o Servidor Local
 
-```
-> dev
-> npx parcel --port 8000 index.html
+1. No terminal, execute:
+    ```bash
+    npm run dev
+    ```
+2. Você verá uma mensagem semelhante a:
+    ```arduino
+    > dev
+    > npx parcel --port 8000 index.html
 
-Server running at http://localhost:8000
-✨ Built in xxxms
-```
+    Server running at http://localhost:8000
+    ✨ Built in xxxms
+    ```
+3. Abra o navegador e acesse: <a>http://localhost:8000</a>
 
-O projeto estará disponível no endereço http://localhost:8000 e você poderá acessá-lo no navegador de sua preferência.
+<br>
+
+-------
+
+<br>
+
+### Observações
+
+- Certifique-se de que as portas necessárias estejam livres antes de executar o servidor.
+- Em caso de dúvidas, consulte a documentação.
