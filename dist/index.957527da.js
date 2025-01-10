@@ -1,8 +1,0 @@
-(()=>{let{API_URL:e}=process.env;async function t(){try{let e=await fetch(process.env.API_URL);return await e.json()}catch(e){console.error("Erro ao buscar dados:",e)}}let n=document.getElementById("modal"),r=document.getElementById("modal-img"),a=document.getElementById("caption"),i=document.querySelector(".close");n.style.display="none";let o=document.querySelector(".image-grid");function c(e){return e&&(e.startsWith("http://")||e.startsWith("https://"))}async function l(){try{let e=await t();e.forEach(e=>{c(e.imgUrl)||console.warn(`URL inv\xe1lida detectada: ${e.imgUrl}`)});let i=e.map(e=>{var t;let n=(t=e.imgUrl,c(t)?t:"https://via.placeholder.com/300x200?text=Imagem+Indisponível");return`
-          <article data-description="${e.descricao}">
-            <figure>
-              <img src="${n}" alt="${e.alt||"Imagem sem descrição"}" loading="lazy" />
-            </figure>
-          </article>
-        `}).join("");i?(o.insertAdjacentHTML("beforeend",i),document.querySelectorAll(".image-grid img").forEach(e=>{e.addEventListener("click",function(){a.textContent="",n.style.display="block",r.src=this.src;let e=this.closest("article"),t=(e?e.dataset.description:"")||this.alt;a.innerHTML=`<p>${t}</p>`})})):o.innerHTML="<p>Nenhuma imagem disponível para exibir.</p>"}catch(e){console.error("Erro ao popular página",e),o.innerHTML="<p>Erro ao carregar as imagens.</p>"}}i.addEventListener("click",function(){n.style.display="none"}),window.addEventListener("click",function(e){e.target===n&&(n.style.display="none")}),document.addEventListener("DOMContentLoaded",l)})();
-//# sourceMappingURL=index.957527da.js.map
