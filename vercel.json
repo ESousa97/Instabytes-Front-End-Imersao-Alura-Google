@@ -8,6 +8,24 @@
           "value": "application/javascript"
         }
       ]
+    },
+    {
+      "source": "/(.*)\\.css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(png|jpg|ico|svg|webp)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/*"
+        }
+      ]
     }
   ],
   "rewrites": [
