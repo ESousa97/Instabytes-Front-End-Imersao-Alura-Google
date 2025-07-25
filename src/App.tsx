@@ -12,7 +12,7 @@ import { usePosts } from './hooks/usePosts';
 import { useNotification } from './hooks/useNotification';
 import type { Post } from './types';
 
-const InstagramClone: React.FC = () => {
+const App: React.FC = () => {
   const { darkMode, toggleDarkMode } = useTheme();
   const { 
     posts, 
@@ -50,7 +50,7 @@ const InstagramClone: React.FC = () => {
         });
       } else {
         await navigator.clipboard.writeText(post.shareUrl || window.location.href);
-        showNotification('Link copiado!');
+        showNotification('Link copiado! 📋');
       }
     } catch (error) {
       showNotification('Erro ao compartilhar', 'error');
@@ -60,7 +60,7 @@ const InstagramClone: React.FC = () => {
   const onFileUpload = async (file: File) => {
     try {
       await handleFileUpload(file);
-      showNotification('Imagem enviada e processada com IA! 🎉');
+      showNotification('Imagem enviada e processada com IA! 🎉✨');
       fetchPosts();
     } catch (error: any) {
       showNotification(error.message || 'Erro ao enviar imagem', 'error');
@@ -73,18 +73,17 @@ const InstagramClone: React.FC = () => {
     try {
       await handleComment(postId, commentText.trim());
       setCommentText('');
-      showNotification('Comentário adicionado!');
+      showNotification('Comentário adicionado! 💬');
     } catch (error: any) {
       showNotification(error.message || 'Erro ao adicionar comentário', 'error');
     }
   };
 
-  const themeClass = darkMode ? 'dark' : '';
-
   return (
-    <div className={`min-h-screen transition-all duration-500 ${themeClass}`}>
+    <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
       <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-black min-h-screen">
         
+        {/* Header */}
         <Header 
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}
@@ -92,16 +91,19 @@ const InstagramClone: React.FC = () => {
           uploading={uploading}
         />
 
+        {/* Notificação */}
         <Notification 
           notification={notification}
           onClose={hideNotification}
         />
 
+        {/* Área de Upload */}
         <UploadArea 
           onFileUpload={onFileUpload}
           uploading={uploading}
         />
 
+        {/* Conteúdo Principal */}
         <main className="max-w-4xl mx-auto px-4 pb-8">
           {loading ? (
             <LoadingSpinner />
@@ -126,8 +128,10 @@ const InstagramClone: React.FC = () => {
           )}
         </main>
 
+        {/* Botão de Scroll para o Topo */}
         <ScrollToTopButton show={showScrollTop} />
 
+        {/* Modal de Post */}
         <PostModal
           post={selectedPost}
           onClose={() => setSelectedPost(null)}
@@ -142,4 +146,4 @@ const InstagramClone: React.FC = () => {
   );
 };
 
-export default InstagramClone;
+export default App;
