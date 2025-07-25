@@ -244,6 +244,86 @@ export const usePosts = () => {
     }
   }, []);
 
+  // Editar post
+  const handleEdit = useCallback(async (postId: string, updateData: { descricao?: string; alt?: string; autor?: string }) => {
+    try {
+      console.log(`✏️ Editando post ${postId}...`, updateData);
+      
+      const response = await api.put(`/posts/${postId}`, updateData);
+
+      if (response.data.success) {
+        setPosts(prevPosts =>
+          prevPosts.map(post =>
+            post._id === postId
+              ? { ...post, ...updateData, updatedAt: new Date().toISOString() }
+              : post
+          )
+        );
+        console.log('✅ Post editado com sucesso!');
+        return response.data.data;
+      } else {
+        throw new Error(response.data.message || 'Erro ao editar post');
+      }
+    } catch (error) {
+      console.error('❌ Erro ao editar post:', error);
+      
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          throw new Error('Post não encontrado');
+        } else if (error.response?.data?.message) {
+          throw new Error(error.response.data.message);
+        } else if (error.code === 'ERR_NETWORK') {
+          // Fallback: atualizar localmente
+          setPosts(prevPosts =>
+            prevPosts.map(post =>
+              post._id === postId
+                ? { ...post, ...updateData, updatedAt: new Date().toISOString() }
+                : post
+            )
+          );
+          console.log('💾 Post editado localmente');
+          return;
+        }
+      }
+      
+      throw new Error('Erro inesperado ao editar post. Tente novamente.');
+    }
+  }, []);
+
+  // Deletar post
+  const handleDelete = useCallback(async (postId: string) => {
+    try {
+      console.log(`🗑️ Deletando post ${postId}...`);
+      
+      const response = await api.delete(`/posts/${postId}`);
+
+      if (response.data.success) {
+        setPosts(prevPosts => prevPosts.filter(post => post._id !== postId));
+        console.log('✅ Post deletado com sucesso!');
+        return true;
+      } else {
+        throw new Error(response.data.message || 'Erro ao deletar post');
+      }
+    } catch (error) {
+      console.error('❌ Erro ao deletar post:', error);
+      
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          throw new Error('Post não encontrado');
+        } else if (error.response?.data?.message) {
+          throw new Error(error.response.data.message);
+        } else if (error.code === 'ERR_NETWORK') {
+          // Fallback: remover localmente
+          setPosts(prevPosts => prevPosts.filter(post => post._id !== postId));
+          console.log('💾 Post removido localmente');
+          return true;
+        }
+      }
+      
+      throw new Error('Erro inesperado ao deletar post. Tente novamente.');
+    }
+  }, []);
+
   return {
     posts,
     loading,
@@ -251,6 +331,8 @@ export const usePosts = () => {
     fetchPosts,
     handleFileUpload,
     handleLike,
-    handleComment
+    handleComment,
+    handleEdit,
+    handleDelete
   };
 };

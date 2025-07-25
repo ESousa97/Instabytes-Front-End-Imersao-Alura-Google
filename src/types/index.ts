@@ -15,6 +15,7 @@ export interface Post {
   descricao: string;
   curtidas: number;
   createdAt: string;
+  updatedAt?: string;
   comentarios: Comentario[];
   shareUrl?: string;
   isLiked?: boolean;
@@ -32,6 +33,8 @@ export interface PostCardProps {
   onComment: (postId: string) => void;
   onShare: (post: Post) => void;
   onOpenModal: () => void;
+  onEdit: (postId: string, updateData: { descricao?: string; alt?: string; autor?: string }) => Promise<void>;
+  onDelete: (postId: string) => Promise<void>;
   commentText: string;
   setCommentText: (text: string) => void;
 }
@@ -42,6 +45,8 @@ export interface PostModalProps {
   onLike: (postId: string) => void;
   onComment: (postId: string) => void;
   onShare: (post: Post) => void;
+  onEdit: (postId: string, updateData: { descricao?: string; alt?: string; autor?: string }) => Promise<void>;
+  onDelete: (postId: string) => Promise<void>;
   commentText: string;
   setCommentText: (text: string) => void;
 }
@@ -65,4 +70,10 @@ export interface NotificationProps {
 
 export interface ScrollToTopButtonProps {
   show: boolean;
+}
+
+export interface EditPostData {
+  descricao?: string;
+  alt?: string;
+  autor?: string;
 }

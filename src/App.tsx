@@ -21,7 +21,9 @@ const App: React.FC = () => {
     fetchPosts, 
     handleFileUpload, 
     handleLike, 
-    handleComment 
+    handleComment,
+    handleEdit,
+    handleDelete
   } = usePosts();
   const { notification, showNotification, hideNotification } = useNotification();
   
@@ -79,6 +81,34 @@ const App: React.FC = () => {
     }
   };
 
+  const onEdit = async (postId: string, updateData: { descricao?: string; alt?: string; autor?: string }) => {
+    try {
+      await handleEdit(postId, updateData);
+      showNotification('Post editado com sucesso! ✏️');
+      
+      // Atualizar o post selecionado no modal se estiver aberto
+      if (selectedPost && selectedPost._id === postId) {
+        setSelectedPost(prev => prev ? { ...prev, ...updateData } : null);
+      }
+    } catch (error: any) {
+      showNotification(error.message || 'Erro ao editar post', 'error');
+    }
+  };
+
+  const onDelete = async (postId: string) => {
+    try {
+      await handleDelete(postId);
+      showNotification('Post deletado com sucesso! 🗑️');
+      
+      // Fechar modal se o post deletado estiver sendo visualizado
+      if (selectedPost && selectedPost._id === postId) {
+        setSelectedPost(null);
+      }
+    } catch (error: any) {
+      showNotification(error.message || 'Erro ao deletar post', 'error');
+    }
+  };
+
   return (
     <div className={`min-h-screen transition-all duration-500 ${darkMode ? 'dark' : ''}`}>
       <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-black min-h-screen">
@@ -120,6 +150,8 @@ const App: React.FC = () => {
                   onComment={onComment}
                   onShare={handleShare}
                   onOpenModal={() => setSelectedPost(post)}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
                   commentText={commentText}
                   setCommentText={setCommentText}
                 />
@@ -138,6 +170,8 @@ const App: React.FC = () => {
           onLike={handleLike}
           onComment={onComment}
           onShare={handleShare}
+          onEdit={onEdit}
+          onDelete={onDelete}
           commentText={commentText}
           setCommentText={setCommentText}
         />

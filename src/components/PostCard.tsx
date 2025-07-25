@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Heart,
   MessageCircle,
@@ -9,7 +9,11 @@ import {
   Bot,
   Sparkles,
   User,
-  Play
+  Play,
+  Edit2,
+  Trash2,
+  Check,
+  X
 } from 'lucide-react';
 import type { PostCardProps } from '../types';
 
@@ -20,9 +24,16 @@ const PostCard: React.FC<PostCardProps> = ({
   onComment,
   onShare,
   onOpenModal,
+  onEdit,
+  onDelete,
   commentText,
   setCommentText
 }) => {
+  const [showOptions, setShowOptions] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(post.descricao);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
   const formatTime = (dateString: string) => {
     const now = new Date();
     const date = new Date(dateString);
@@ -32,6 +43,23 @@ const PostCard: React.FC<PostCardProps> = ({
     if (hours < 1) return 'agora';
     if (hours < 24) return `${hours}h`;
     return `${Math.floor(hours / 24)}d`;
+  };
+
+  const handleSaveEdit = async () => {
+    if (editText.trim() !== post.descricao) {
+      await onEdit(post._id, { descricao: editText.trim() });
+    }
+    setIsEditing(false);
+  };
+
+  const handleCancelEdit = () => {
+    setEditText(post.descricao);
+    setIsEditing(false);
+  };
+
+  const handleDelete = async () => {
+    await onDelete(post._id);
+    setShowDeleteConfirm(false);
   };
 
   return (
@@ -62,10 +90,75 @@ const PostCard: React.FC<PostCardProps> = ({
             </p>
           </div>
         </div>
-        <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors group">
-          <MoreHorizontal size={20} className="text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" />
-        </button>
+        
+        {/* Options Menu */}
+        <div className="relative">
+          <button 
+            onClick={() => setShowOptions(!showOptions)}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors group"
+          >
+            <MoreHorizontal size={20} className="text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" />
+          </button>
+          
+          {showOptions && (
+            <div className="absolute right-0 top-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-10 min-w-[160px]">
+              <button
+                onClick={() => {
+                  setIsEditing(true);
+                  setShowOptions(false);
+                }}
+                className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 text-gray-700 dark:text-gray-300"
+              >
+                <Edit2 size={16} />
+                Editar post
+              </button>
+              <button
+                onClick={() => {
+                  setShowDeleteConfirm(true);
+                  setShowOptions(false);
+                }}
+                className="w-full px-4 py-2 text-left hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center gap-2 text-red-600 dark:text-red-400"
+              >
+                <Trash2 size={16} />
+                Deletar post
+              </button>
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-sm w-full shadow-2xl">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Trash2 size={24} className="text-red-600 dark:text-red-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                Deletar Post
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                Tem certeza que deseja deletar este post? Esta ação não pode ser desfeita.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowDeleteConfirm(false)}
+                  className="flex-1 px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="flex-1 px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+                >
+                  Deletar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Post Image */}
       {post.imgUrl && (
@@ -159,18 +252,52 @@ const PostCard: React.FC<PostCardProps> = ({
         {/* Post Description */}
         <div className="space-y-3">
           <div className="flex items-start gap-2">
-            <p className="text-gray-900 dark:text-gray-100 leading-relaxed flex-1">
-              <span className="font-semibold mr-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors cursor-pointer">
-                {post.autor || 'Usuário'}
-              </span>
-              {post.descricao}
-            </p>
-            <div className="flex-shrink-0 ml-2">
-              <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full px-2 py-1 flex items-center gap-1">
-                <Bot size={10} className="text-purple-600 dark:text-purple-400" />
-                <span className="text-xs text-purple-700 dark:text-purple-300 font-medium">IA</span>
+            {isEditing ? (
+              <div className="flex-1 space-y-3">
+                <textarea
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  rows={3}
+                  maxLength={1000}
+                />
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {editText.length}/1000 caracteres
+                  </span>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleCancelEdit}
+                      className="px-3 py-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                    >
+                      <X size={16} />
+                    </button>
+                    <button
+                      onClick={handleSaveEdit}
+                      className="px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex items-center gap-1"
+                    >
+                      <Check size={16} />
+                      Salvar
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <>
+                <p className="text-gray-900 dark:text-gray-100 leading-relaxed flex-1">
+                  <span className="font-semibold mr-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors cursor-pointer">
+                    {post.autor || 'Usuário'}
+                  </span>
+                  {post.descricao}
+                </p>
+                <div className="flex-shrink-0 ml-2">
+                  <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full px-2 py-1 flex items-center gap-1">
+                    <Bot size={10} className="text-purple-600 dark:text-purple-400" />
+                    <span className="text-xs text-purple-700 dark:text-purple-300 font-medium">IA</span>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Comments Preview */}
