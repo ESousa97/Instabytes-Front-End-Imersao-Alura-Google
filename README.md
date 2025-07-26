@@ -520,40 +520,7 @@ export const useExternalAPI = () => {
 }
 ```
 
-## 🚢 Deployment Detalhado e Escalabilidade
-
-### Plataforma de Deployment
-
-O InstaBytes é implantado na **Vercel**, uma plataforma de desenvolvimento focada em aplicações frontend modernas e otimizada para frameworks React.
-
-*   **URL de Produção:** [https://instabytes-frontend.vercel.app](https://instabytes-frontend.vercel.app)
-*   **Preview Deployments:** URLs únicas para cada PR para revisão de mudanças
-*   **Analytics:** Monitoramento de performance e usage metrics integrado
-
-### Processo de Deployment
-
-O processo de deployment é completamente automatizado e integrado ao workflow de desenvolvimento:
-
-1.  **Continuous Deployment:**
-    *   Push para branch `main` → Build automático → Deploy em produção
-    *   Pull Requests → Preview deployment para testing e review
-    *   Rollback automático em caso de falhas críticas
-
-2.  **Build Otimizado:**
-    *   Vite build com tree-shaking automático
-    *   Code splitting por rotas e componentes
-    *   Compressão gzip/brotli automática
-    *   Assets optimization e lazy loading
-
-3.  **Environment Configuration:**
-    ```bash
-    # Variáveis de produção no Vercel
-    VITE_API_URL=https://instabytes-api.herokuapp.com
-    VITE_CDN_URL=https://d2x3xhvgiqkx42.cloudfront.net
-    VITE_ANALYTICS_ID=G-XXXXXXXXXX
-    ```
-
-### Escalabilidade
+## 🚢 Escalabilidade
 
 A arquitetura do InstaBytes é projetada para escalabilidade horizontal e vertical:
 
