@@ -520,7 +520,11 @@ export const useExternalAPI = () => {
 }
 ```
 
+<<<<<<< HEAD
 ### Escalabilidade
+=======
+## 🚢 Escalabilidade
+>>>>>>> 90b92e0c41607b770157fc69381c7cc3e0edc5f9
 
 A arquitetura do InstaBytes é projetada para escalabilidade horizontal e vertical:
 
