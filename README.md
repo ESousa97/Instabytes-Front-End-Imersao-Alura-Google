@@ -33,7 +33,7 @@ O projeto **InstaBytes** aborda a crescente demanda por plataformas de compartil
 *   [🚀 Guia de Instalação e Configuração Avançada](#-guia-de-instalação-e-configuração-avançada)
 *   [⚙️ Uso Avançado e Exemplos](#%EF%B8%8F-uso-avançado-e-exemplos)
 *   [🧪 Estratégia de Testes e Qualidade de Código](#-estratégia-de-testes-e-qualidade-de-código)
-*   [🚢 Deployment Detalhado e Escalabilidade](#-deployment-detalhado-e-escalabilidade)
+*   [🚢 Escalabilidade](#escalabilidade)
 *   [📜 Licença e Aspectos Legais](#-licença-e-aspectos-legais)
 *   [❓ FAQ (Perguntas Frequentes)](#-faq-perguntas-frequentes)
 *   [📞 Contato e Suporte](#-contato-e-suporte)
@@ -520,39 +520,6 @@ export const useExternalAPI = () => {
 }
 ```
 
-## 🚢 Deployment Detalhado e Escalabilidade
-
-### Plataforma de Deployment
-
-O InstaBytes é implantado na **Vercel**, uma plataforma de desenvolvimento focada em aplicações frontend modernas e otimizada para frameworks React.
-
-*   **URL de Produção:** [https://instabytes-frontend.vercel.app](https://instabytes-frontend.vercel.app)
-*   **Preview Deployments:** URLs únicas para cada PR para revisão de mudanças
-*   **Analytics:** Monitoramento de performance e usage metrics integrado
-
-### Processo de Deployment
-
-O processo de deployment é completamente automatizado e integrado ao workflow de desenvolvimento:
-
-1.  **Continuous Deployment:**
-    *   Push para branch `main` → Build automático → Deploy em produção
-    *   Pull Requests → Preview deployment para testing e review
-    *   Rollback automático em caso de falhas críticas
-
-2.  **Build Otimizado:**
-    *   Vite build com tree-shaking automático
-    *   Code splitting por rotas e componentes
-    *   Compressão gzip/brotli automática
-    *   Assets optimization e lazy loading
-
-3.  **Environment Configuration:**
-    ```bash
-    # Variáveis de produção no Vercel
-    VITE_API_URL=https://instabytes-api.herokuapp.com
-    VITE_CDN_URL=https://d2x3xhvgiqkx42.cloudfront.net
-    VITE_ANALYTICS_ID=G-XXXXXXXXXX
-    ```
-
 ### Escalabilidade
 
 A arquitetura do InstaBytes é projetada para escalabilidade horizontal e vertical:
@@ -591,7 +558,7 @@ O projeto **InstaBytes** é distribuído sob a **Licença MIT**, uma das licenç
 
 Para o texto completo da licença, consulte o arquivo `LICENSE` no repositório:
 
-[📜 Visualizar Licença MIT Completa](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/blob/main/LICENSE)
+[📜 Visualizar Licença MIT Completa](./LICENSE)
 
 **Considerações Legais Adicionais:**
 *   Integração com APIs terceirizadas (Google Gemini) sujeita aos termos de serviço respectivos
