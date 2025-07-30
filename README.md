@@ -22,9 +22,8 @@ O projeto **InstaBytes** aborda a crescente demanda por plataformas de compartil
 
 *   [Introdução e Motivação](#introdução-e-motivação)
 *   [🔗 Link Principal / Acesso ao Projeto](#-link-principal--acesso-ao-projeto)
-*   [🎬 Demonstração Visual](#-demonstração-visual)
 *   [Arquitetura do Sistema](#arquitetura-do-sistema)
-    *   [Diagrama de Arquitetura](#diagrama-de-arquitetura)
+*   [Diagrama de Arquitetura](#diagrama-de-arquitetura)
 *   [Decisões de Design Chave](#decisões-de-design-chave)
 *   [✨ Funcionalidades Detalhadas (com Casos de Uso)](#-funcionalidades-detalhadas-com-casos-de-uso)
 *   [🛠️ Tech Stack Detalhado](#%EF%B8%8F-tech-stack-detalhado)
@@ -51,12 +50,6 @@ A proposta de valor única do InstaBytes reside na sua capacidade de democratiza
 A motivação central para o desenvolvimento do InstaBytes é criar uma plataforma social mais inteligente, interativa e acessível, onde a IA atua como um parceiro criativo, capacitando os usuários a compartilhar suas histórias e experiências de forma mais eficaz e envolvente. Os objetivos de longo prazo incluem a expansão das capacidades de IA para incluir a geração de conteúdo de vídeo, a personalização de legendas com base nas preferências e estilo do usuário, e a integração seamless com outras plataformas de mídia social.
 
 Esta demonstração oferece acesso à versão mais recente do projeto, permitindo que você carregue imagens, experimente a geração automática de legendas por IA, e explore todas as funcionalidades sociais da plataforma em tempo real.
-
-## 🎬 Demonstração Visual
-
-<p align="center">
-  <img src="./public/InstabyteFront.gif" alt="Demonstração da Plataforma InstaBytes em Funcionamento" width="800">
-</p>
 
 ## Arquitetura do Sistema
 
