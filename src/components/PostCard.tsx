@@ -15,6 +15,8 @@ import {
   Check,
   X
 } from 'lucide-react';
+import ConfirmationModal from './ConfirmationModal';
+import { formatTime } from '../utils/formatTime';
 import type { PostCardProps } from '../types';
 
 const PostCard: React.FC<PostCardProps> = ({
@@ -33,17 +35,6 @@ const PostCard: React.FC<PostCardProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(post.descricao);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-
-  const formatTime = (dateString: string) => {
-    const now = new Date();
-    const date = new Date(dateString);
-    const diff = now.getTime() - date.getTime();
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    
-    if (hours < 1) return 'agora';
-    if (hours < 24) return `${hours}h`;
-    return `${Math.floor(hours / 24)}d`;
-  };
 
   const handleSaveEdit = async () => {
     if (editText.trim() !== post.descricao) {
@@ -128,37 +119,16 @@ const PostCard: React.FC<PostCardProps> = ({
       </div>
 
       {/* Delete Confirmation Modal */}
-      {showDeleteConfirm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-sm w-full shadow-2xl">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trash2 size={24} className="text-red-600 dark:text-red-400" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                Deletar Post
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Tem certeza que deseja deletar este post? Esta ação não pode ser desfeita.
-              </p>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setShowDeleteConfirm(false)}
-                  className="flex-1 px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  Cancelar
-                </button>
-                <button
-                  onClick={handleDelete}
-                  className="flex-1 px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
-                >
-                  Deletar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <ConfirmationModal
+        isOpen={showDeleteConfirm}
+        onClose={() => setShowDeleteConfirm(false)}
+        onConfirm={handleDelete}
+        title="Deletar Post"
+        message="Tem certeza que deseja deletar este post? Esta ação não pode ser desfeita."
+        confirmText="Deletar"
+        cancelText="Cancelar"
+        type="danger"
+      />
 
       {/* Post Image */}
       {post.imgUrl && (
