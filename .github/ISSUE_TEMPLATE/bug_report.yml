@@ -1,0 +1,57 @@
+name: "🐛 Bug report"
+description: Reporte um problema para nos ajudar a melhorar.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar! Preencha as informações abaixo.
+  - type: input
+    id: summary
+    attributes:
+      label: Resumo
+      description: Descreva o problema em uma frase.
+      placeholder: "Ao abrir o modal, a tela fica branca"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      description: Liste as etapas para reproduzir o problema.
+      placeholder: |
+        1. Acesse a página inicial
+        2. Clique em ...
+        3. Veja o erro
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+      placeholder: "O modal deveria abrir normalmente"
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Resultado atual
+      placeholder: "A tela fica branca"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Navegador, SO, versão do Node, etc.
+      placeholder: "Chrome 120, Windows 11, Node 18"
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs/Erros
+      description: Cole logs relevantes, se houver.
+      render: shell
+    validations:
+      required: false

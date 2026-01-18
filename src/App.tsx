@@ -31,6 +31,12 @@ const App: React.FC = () => {
   const [commentText, setCommentText] = useState<string>('');
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
+  const getErrorMessage = (error: unknown, fallback: string) => {
+    if (error instanceof Error) return error.message;
+    if (typeof error === 'string') return error;
+    return fallback;
+  };
+
   useEffect(() => {
     fetchPosts();
     
@@ -54,7 +60,8 @@ const App: React.FC = () => {
         await navigator.clipboard.writeText(post.shareUrl || window.location.href);
         showNotification('Link copiado! 📋');
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      console.error('Erro ao compartilhar', error);
       showNotification('Erro ao compartilhar', 'error');
     }
   };
@@ -64,8 +71,8 @@ const App: React.FC = () => {
       await handleFileUpload(file);
       showNotification('Imagem enviada e processada com IA! 🎉✨');
       fetchPosts();
-    } catch (error: any) {
-      showNotification(error.message || 'Erro ao enviar imagem', 'error');
+    } catch (error: unknown) {
+      showNotification(getErrorMessage(error, 'Erro ao enviar imagem'), 'error');
     }
   };
 
@@ -76,8 +83,8 @@ const App: React.FC = () => {
       await handleComment(postId, commentText.trim());
       setCommentText('');
       showNotification('Comentário adicionado! 💬');
-    } catch (error: any) {
-      showNotification(error.message || 'Erro ao adicionar comentário', 'error');
+    } catch (error: unknown) {
+      showNotification(getErrorMessage(error, 'Erro ao adicionar comentário'), 'error');
     }
   };
 
@@ -90,8 +97,8 @@ const App: React.FC = () => {
       if (selectedPost && selectedPost._id === postId) {
         setSelectedPost(prev => prev ? { ...prev, ...updateData } : null);
       }
-    } catch (error: any) {
-      showNotification(error.message || 'Erro ao editar post', 'error');
+    } catch (error: unknown) {
+      showNotification(getErrorMessage(error, 'Erro ao editar post'), 'error');
     }
   };
 
@@ -104,8 +111,8 @@ const App: React.FC = () => {
       if (selectedPost && selectedPost._id === postId) {
         setSelectedPost(null);
       }
-    } catch (error: any) {
-      showNotification(error.message || 'Erro ao deletar post', 'error');
+    } catch (error: unknown) {
+      showNotification(getErrorMessage(error, 'Erro ao deletar post'), 'error');
     }
   };
 

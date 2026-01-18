@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# A+ process artifacts
+BASELINE.md
+Relatório FINAL.md

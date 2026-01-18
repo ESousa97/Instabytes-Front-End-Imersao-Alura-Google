@@ -10,13 +10,18 @@ O projeto **InstaBytes** aborda a crescente demanda por plataformas de compartil
 
 ## Badges Abrangentes
 
-[![Licença MIT](https://img.shields.io/github/license/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Licença)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/blob/main/LICENSE)
-[![Linguagem Principal](https://img.shields.io/github/languages/top/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Linguagem%20Principal)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
-[![Último Commit](https://img.shields.io/github/last-commit/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Último%20Commit)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/commits/main)
-[![Issues Abertas](https://img.shields.io/github/issues/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Issues)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/issues)
-[![Pull Requests Abertas](https://img.shields.io/github/issues-pr/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Pull%20Requests)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/pulls)
-[![Tamanho do Código](https://img.shields.io/github/languages/code-size/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Tamanho%20do%20Código)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
-[![Contribuidores](https://img.shields.io/github/contributors/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=for-the-badge&label=Contribuidores)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/graphs/contributors)
+[![CI](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/ci.yml?branch=main&style=flat)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/ci.yml)
+[![Code Quality](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/quality.yml?branch=main&style=flat&label=Code%20Quality)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/quality.yml)
+[![Coverage](https://codecov.io/gh/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/branch/main/graph/badge.svg?style=flat)](https://codecov.io/gh/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/codeql.yml?branch=main&style=flat&label=CodeQL)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/codeql.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/badge)](https://www.codefactor.io/repository/github/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
+[![Licença MIT](https://img.shields.io/github/license/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Licença)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/blob/main/LICENSE)
+[![Linguagem Principal](https://img.shields.io/github/languages/top/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Linguagem%20Principal)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
+[![Último Commit](https://img.shields.io/github/last-commit/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Último%20Commit)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/commits/main)
+[![Issues Abertas](https://img.shields.io/github/issues/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Issues)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/issues)
+[![Pull Requests Abertas](https://img.shields.io/github/issues-pr/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Pull%20Requests)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/pulls)
+[![Tamanho do Código](https://img.shields.io/github/languages/code-size/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Tamanho%20do%20Código)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
+[![Contribuidores](https://img.shields.io/github/contributors/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Contribuidores)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/graphs/contributors)
 
 ## Sumário
 
