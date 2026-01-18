@@ -3,7 +3,7 @@ import axios from 'axios';
 import type { Post } from '../types';
 
 // Configurar a URL base da API
-const API_BASE_URL = process.env.VITE_API_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 // Configurar axios com timeout e interceptors
 const api = axios.create({
@@ -15,7 +15,7 @@ const api = axios.create({
 });
 
 // Interceptor para log de requests (apenas em desenvolvimento)
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.MODE === 'development') {
   api.interceptors.request.use(
     (config) => {
       console.log(`🔄 API Request: ${config.method?.toUpperCase()} ${config.url}`);
