@@ -5,17 +5,14 @@ import {
   Share2,
   Send,
   Bookmark,
-  MoreHorizontal,
   Bot,
   Sparkles,
   User,
-  Play,
-  Edit2,
-  Trash2,
-  Check,
-  X
+  Play
 } from 'lucide-react';
 import ConfirmationModal from './ConfirmationModal';
+import PostDescriptionEditor from './PostDescriptionEditor';
+import PostOptionsMenu from './PostOptionsMenu';
 import { formatTime } from '../utils/formatTime';
 import type { PostCardProps } from '../types';
 
@@ -83,39 +80,20 @@ const PostCard: React.FC<PostCardProps> = ({
         </div>
         
         {/* Options Menu */}
-        <div className="relative">
-          <button 
-            onClick={() => setShowOptions(!showOptions)}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors group"
-          >
-            <MoreHorizontal size={20} className="text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" />
-          </button>
-          
-          {showOptions && (
-            <div className="absolute right-0 top-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-10 min-w-[160px]">
-              <button
-                onClick={() => {
-                  setIsEditing(true);
-                  setShowOptions(false);
-                }}
-                className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 text-gray-700 dark:text-gray-300"
-              >
-                <Edit2 size={16} />
-                Editar post
-              </button>
-              <button
-                onClick={() => {
-                  setShowDeleteConfirm(true);
-                  setShowOptions(false);
-                }}
-                className="w-full px-4 py-2 text-left hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center gap-2 text-red-600 dark:text-red-400"
-              >
-                <Trash2 size={16} />
-                Deletar post
-              </button>
-            </div>
-          )}
-        </div>
+        <PostOptionsMenu
+          showOptions={showOptions}
+          onToggle={() => setShowOptions(!showOptions)}
+          onEdit={() => {
+            setIsEditing(true);
+            setShowOptions(false);
+          }}
+          onDelete={() => {
+            setShowDeleteConfirm(true);
+            setShowOptions(false);
+          }}
+          triggerButtonClassName="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors group"
+          triggerIconClassName="text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200"
+        />
       </div>
 
       {/* Delete Confirmation Modal */}
@@ -223,35 +201,14 @@ const PostCard: React.FC<PostCardProps> = ({
         <div className="space-y-3">
           <div className="flex items-start gap-2">
             {isEditing ? (
-              <div className="flex-1 space-y-3">
-                <textarea
-                  value={editText}
-                  onChange={(e) => setEditText(e.target.value)}
-                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  rows={3}
-                  maxLength={1000}
-                />
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
-                    {editText.length}/1000 caracteres
-                  </span>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={handleCancelEdit}
-                      className="px-3 py-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-                    >
-                      <X size={16} />
-                    </button>
-                    <button
-                      onClick={handleSaveEdit}
-                      className="px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex items-center gap-1"
-                    >
-                      <Check size={16} />
-                      Salvar
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <PostDescriptionEditor
+                value={editText}
+                onChange={setEditText}
+                onCancel={handleCancelEdit}
+                onSave={handleSaveEdit}
+                rows={3}
+                className="flex-1"
+              />
             ) : (
               <>
                 <p className="text-gray-900 dark:text-gray-100 leading-relaxed flex-1">
