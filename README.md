@@ -1,626 +1,346 @@
-# InstaBytes: Uma Plataforma Social Aprimorada por Inteligência Artificial
+<div align="center">
 
-**Transformando a maneira como compartilhamos e interagimos com conteúdo visual através da IA.**
+# InstaBytes
 
----
+[![CI](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/ci.yml?style=flat&logo=github-actions&logoColor=white)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/ci.yml)
+[![Quality](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/quality.yml?style=flat&logo=github-actions&logoColor=white&label=Quality)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/quality.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/codeql.yml?style=flat&logo=github-actions&logoColor=white&label=CodeQL)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/codeql.yml)
+[![Coverage](https://img.shields.io/codecov/c/gh/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&logo=codecov&logoColor=white)](https://codecov.io/gh/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&logo=codefactor&logoColor=white)](https://www.codefactor.io/repository/github/esousa97/instabytes-front-end-imersao-alura-google)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat&logo=opensourceinitiative&logoColor=white)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/Status-Archived-lightgrey.svg?style=flat&logo=archive&logoColor=white)](#)
 
-## Abstract (Resumo Técnico)
+**Plataforma social de compartilhamento de imagens com geração automática de legendas via Google Gemini — React 18, TypeScript, Tailwind CSS, Vite e Node.js/Express no backend.**
 
-O projeto **InstaBytes** aborda a crescente demanda por plataformas de compartilhamento de imagens que sejam mais inteligentes e interativas. Em um cenário onde a criação de conteúdo visual é vasta, a dificuldade em gerar descrições relevantes e envolventes para as imagens se torna um desafio significativo. InstaBytes propõe uma solução inovadora ao integrar inteligência artificial avançada para automatizar a geração de legendas e descrições de imagens, enriquecendo substancialmente a experiência do usuário e facilitando a descoberta de conteúdo. A metodologia principal envolve o uso de modelos de IA de última geração, como o Google Gemini, para analisar o conteúdo visual das imagens e gerar descrições textuais contextualmente relevantes, criativas e envolventes. A arquitetura utiliza React com TypeScript no frontend e Node.js no backend, garantindo uma experiência moderna e responsiva. Os resultados esperados incluem um aumento significativo no engajamento do usuário, uma melhor organização e categorização do conteúdo, e uma experiência de compartilhamento mais fluida e intuitiva. A contribuição central do InstaBytes reside na sua capacidade de democratizar a criação de conteúdo de alta qualidade, permitindo que usuários sem habilidades de escrita criativa produzam posts visualmente atraentes e textualmente ricos, revolucionando a forma como interagimos com mídias sociais baseadas em imagem.
+[Demo](https://instabytes-front-end.vercel.app/)
 
-## Badges Abrangentes
-
-[![CI](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/ci.yml?branch=main&style=flat)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/ci.yml)
-[![Code Quality](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/quality.yml?branch=main&style=flat&label=Code%20Quality)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/quality.yml)
-[![Coverage](https://codecov.io/gh/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/branch/main/graph/badge.svg?style=flat)](https://codecov.io/gh/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
-[![CodeQL](https://img.shields.io/github/actions/workflow/status/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/codeql.yml?branch=main&style=flat&label=CodeQL)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/actions/workflows/codeql.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/badge)](https://www.codefactor.io/repository/github/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
-[![Licença MIT](https://img.shields.io/github/license/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Licença)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/blob/main/LICENSE)
-[![Linguagem Principal](https://img.shields.io/github/languages/top/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Linguagem%20Principal)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
-[![Último Commit](https://img.shields.io/github/last-commit/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Último%20Commit)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/commits/main)
-[![Issues Abertas](https://img.shields.io/github/issues/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Issues)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/issues)
-[![Pull Requests Abertas](https://img.shields.io/github/issues-pr/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Pull%20Requests)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/pulls)
-[![Tamanho do Código](https://img.shields.io/github/languages/code-size/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Tamanho%20do%20Código)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google)
-[![Contribuidores](https://img.shields.io/github/contributors/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=flat&label=Contribuidores)](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/graphs/contributors)
-
-## Sumário
-
-*   [Introdução e Motivação](#introdução-e-motivação)
-*   [🔗 Link Principal / Acesso ao Projeto](#-link-principal--acesso-ao-projeto)
-*   [Arquitetura do Sistema](#arquitetura-do-sistema)
-*   [Diagrama de Arquitetura](#diagrama-de-arquitetura)
-*   [Decisões de Design Chave](#decisões-de-design-chave)
-*   [✨ Funcionalidades Detalhadas (com Casos de Uso)](#-funcionalidades-detalhadas-com-casos-de-uso)
-*   [🛠️ Tech Stack Detalhado](#%EF%B8%8F-tech-stack-detalhado)
-*   [📂 Estrutura Detalhada do Código-Fonte](#-estrutura-detalhada-do-código-fonte)
-*   [📋 Pré-requisitos Avançados](#-pré-requisitos-avançados)
-*   [🚀 Guia de Instalação e Configuração Avançada](#-guia-de-instalação-e-configuração-avançada)
-*   [⚙️ Uso Avançado e Exemplos](#%EF%B8%8F-uso-avançado-e-exemplos)
-*   [🧪 Estratégia de Testes e Qualidade de Código](#-estratégia-de-testes-e-qualidade-de-código)
-*   [🚢 Escalabilidade](#escalabilidade)
-*   [📜 Licença e Aspectos Legais](#-licença-e-aspectos-legais)
-*   [❓ FAQ (Perguntas Frequentes)](#-faq-perguntas-frequentes)
-*   [📞 Contato e Suporte](#-contato-e-suporte)
+</div>
 
 ---
 
-## Introdução e Motivação
+> **⚠️ Projeto Arquivado**
+> Este projeto não recebe mais atualizações ou correções. O código permanece disponível como referência e pode ser utilizado livremente sob a licença MIT. Fique à vontade para fazer fork caso deseje continuar o desenvolvimento.
 
-A ascensão das redes sociais e o compartilhamento constante de conteúdo visual criaram um ecossistema onde a atenção do usuário é um recurso valioso e disputado. No entanto, a criação de legendas e descrições de alta qualidade para imagens e vídeos pode ser demorada e desafiadora, especialmente para usuários que não possuem habilidades de escrita criativa. Essa dificuldade pode levar a posts com descrições genéricas, pouco envolventes ou até mesmo à ausência de texto, resultando em menor visibilidade, engajamento reduzido e experiências de usuário subótimas.
+---
 
-InstaBytes surge como uma solução tecnológica avançada para essa problemática, oferecendo uma plataforma que integra inteligência artificial de ponta para automatizar a geração de legendas e descrições de imagens. Ao aproveitar modelos de IA de última geração, como o Google Gemini, InstaBytes é capaz de analisar profundamente o conteúdo visual das imagens e gerar descrições textuais contextualmente relevantes, criativas e envolventes. Isso permite que os usuários produzam posts de alta qualidade de forma rápida e eficiente, aumentando significativamente o engajamento e a visibilidade de seu conteúdo.
+## Índice
 
-A proposta de valor única do InstaBytes reside na sua capacidade de democratizar a criação de conteúdo de alta qualidade, permitindo que usuários de todos os níveis de habilidade produzam posts visualmente atraentes e textualmente ricos. Além disso, a integração de IA para geração de legendas abre novas possibilidades para a organização e descoberta de conteúdo, facilitando a busca por imagens e vídeos com base em suas características visuais e descrições textuais automaticamente geradas.
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias](#tecnologias)
+- [Arquitetura do Sistema](#arquitetura-do-sistema)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Começando](#começando)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalação](#instalação)
+  - [Configuração](#configuração)
+  - [Uso Local](#uso-local)
+- [Scripts Disponíveis](#scripts-disponíveis)
+- [Qualidade e Governança](#qualidade-e-governança)
+- [Deploy](#deploy)
+- [FAQ](#faq)
+- [Licença](#licença)
+- [Contato](#contato)
 
-A motivação central para o desenvolvimento do InstaBytes é criar uma plataforma social mais inteligente, interativa e acessível, onde a IA atua como um parceiro criativo, capacitando os usuários a compartilhar suas histórias e experiências de forma mais eficaz e envolvente. Os objetivos de longo prazo incluem a expansão das capacidades de IA para incluir a geração de conteúdo de vídeo, a personalização de legendas com base nas preferências e estilo do usuário, e a integração seamless com outras plataformas de mídia social.
+---
 
-Esta demonstração oferece acesso à versão mais recente do projeto, permitindo que você carregue imagens, experimente a geração automática de legendas por IA, e explore todas as funcionalidades sociais da plataforma em tempo real.
+## Sobre o Projeto
+
+Este projeto é o frontend de uma plataforma social de compartilhamento de imagens que integra inteligência artificial (Google Gemini) para gerar automaticamente descrições criativas e contextualmente relevantes. Desenvolvido com React 18, TypeScript e Tailwind CSS, oferece upload com drag & drop, feed interativo com curtidas e comentários, dark mode e design mobile-first.
+
+O repositório prioriza:
+
+- **Geração de legendas via IA** — Google Gemini analisa o conteúdo visual e gera descrições em tempo real
+- **React 18 + TypeScript** — Tipagem estática, hooks customizados (`useTheme`, `usePosts`, `useNotification`) e componentes modulares
+- **Tailwind CSS** — Design system utility-first com paleta gradiente (purple → pink → orange) e dark mode
+- **Vite** — HMR ultrarrápido, ESM nativo e builds de produção otimizados
+- **Arquitetura modular** — Separação clara entre componentes, hooks e tipos com responsabilidade única
+- **Acessibilidade** — Suporte a screen readers, navegação por teclado e contraste adequado em ambos os temas
+
+### Por que React + TypeScript + Tailwind?
+
+A combinação representa o estado da arte em desenvolvimento frontend: React 18 com concurrent features para responsividade, TypeScript para eliminar categorias inteiras de bugs em compilação, e Tailwind para desenvolvimento ágil com bundle size otimizado. Vite completa a stack com feedback instantâneo durante desenvolvimento.
+
+---
+
+## Funcionalidades
+
+- **Upload inteligente com IA** — Drag & drop ou seleção de arquivo com processamento Google Gemini em tempo real
+- **Geração automática de legendas** — Descrições criativas e contextuais geradas por análise visual da IA
+- **Feed interativo** — Curtidas com animações fluidas, comentários e compartilhamento via Web Share API
+- **Modal de visualização** — Visualização imersiva expandida com interações sociais completas
+- **Edição in-line** — Edição de descrições diretamente no post sem recarregar página
+- **Dark mode** — Alternância claro/escuro com persistência local e detecção de preferência do sistema
+- **Design mobile-first** — Breakpoints otimizados com experiência touch e responsividade completa
+- **Feed infinito** — Lazy loading com scroll infinito para carregamento sob demanda
+- **Notificações toast** — Sistema de notificações com auto-dismiss e fila de mensagens
+
+---
+
+## Tecnologias
+
+### Frontend
+
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+
+### Backend e Serviços
+
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=flat&logo=google&logoColor=white)
+
+### Ferramentas de Desenvolvimento
+
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=flat&logo=eslint&logoColor=white)
+![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A?style=flat&logo=postcss&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
+![Lucide](https://img.shields.io/badge/Lucide-F56565?style=flat&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
+
+**Requisitos mínimos:**
+
+- Node.js 18+ e npm 8+
+- Navegador moderno (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
+
+---
 
 ## Arquitetura do Sistema
 
-A arquitetura do InstaBytes é projetada seguindo princípios modernos de desenvolvimento web, sendo modular, escalável e resiliente, permitindo que a plataforma suporte um grande número de usuários simultâneos e um volume crescente de conteúdo visual. A arquitetura adota uma abordagem de separação clara entre frontend e backend, facilitando manutenção, escalabilidade e desenvolvimento independente de cada camada.
-
-### Componentes Arquiteturais
-
-A arquitetura é composta pelos seguintes componentes principais:
-
-1. **Frontend (Interface do Usuário):** Implementado com React 18, TypeScript e Tailwind CSS, o frontend oferece uma interface moderna, interativa e totalmente responsiva. Utiliza hooks customizados para gerenciamento de estado, componentes reutilizáveis para consistência visual, e técnicas avançadas de otimização como lazy loading e code splitting.
-
-2. **Backend (Servidor da Aplicação):** Construído com Node.js e Express, o backend atua como a camada intermediária robusta entre o frontend e os serviços externos. Gerencia autenticação, autorização, processamento de dados, upload de imagens, e orquestra as chamadas para serviços de IA.
-
-3. **Serviço de IA (Google Gemini):** Integração direta com a API do Google Gemini para análise avançada de conteúdo visual e geração de descrições textuais contextualmente relevantes. O serviço processa imagens em tempo real e retorna descrições criativas e envolventes.
-
-4. **Banco de Dados:** Sistema de persistência para armazenar metadados de posts, informações de usuário, comentários, curtidas e dados de interação. Suporta tanto bancos relacionais (PostgreSQL) quanto NoSQL (MongoDB) dependendo dos requisitos específicos.
-
-5. **Armazenamento de Imagens:** Utiliza serviços de cloud storage como Amazon S3 ou Google Cloud Storage para armazenamento escalável e distribuído de imagens, garantindo alta disponibilidade e performance otimizada.
-
-### Interações e Fluxo de Dados
-
-O fluxo de dados segue um padrão de arquitetura RESTful com as seguintes interações principais:
-
-*   **Upload de Imagem:** Frontend → Backend → Cloud Storage → Google Gemini → Backend → Frontend
-*   **Visualização de Posts:** Frontend → Backend → Banco de Dados → Frontend
-*   **Interações Sociais:** Frontend → Backend → Banco de Dados → Frontend (real-time via WebSockets futuro)
-
-### Diagrama de Arquitetura
-
-```mermaid
-graph TB
-    subgraph "Cliente"
-        A[React Frontend<br/>TypeScript + Tailwind]
-    end
-    
-    subgraph "Camada de Aplicação"
-        B[Node.js Backend<br/>Express + API REST]
-    end
-    
-    subgraph "Serviços Externos"
-        C[Google Gemini<br/>IA para Análise de Imagem]
-        D[Cloud Storage<br/>Amazon S3 / GCS]
-    end
-    
-    subgraph "Persistência"
-        E[Banco de Dados<br/>PostgreSQL / MongoDB]
-    end
-    
-    A -->|HTTP/HTTPS| B
-    B -->|API Calls| C
-    B -->|Upload/Download| D
-    B -->|Queries| E
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#fff3e0
-    style D fill:#e8f5e8
-    style E fill:#fce4ec
-```
-
-### Justificativas das Decisões Arquiteturais
-
-A escolha de uma arquitetura modular foi motivada por diversos fatores estratégicos que garantem escalabilidade, manutenibilidade e performance otimizada:
-
-*   **Separação de Responsabilidades:** Frontend focado em UX/UI, backend em lógica de negócio, serviços externos especializados em IA e storage
-*   **Escalabilidade Independente:** Cada componente pode ser escalado individualmente conforme demanda
-*   **Tecnologias Especializadas:** React para interfaces reativas, Node.js para performance, Google Gemini para IA avançada
-*   **Manutenibilidade:** Código organizado em camadas bem definidas facilita updates e debugging
-*   **Performance:** CDN para assets estáticos, cache inteligente, e processamento assíncrono de IA
-
-## Decisões de Design Chave
-
-As decisões de design técnico do InstaBytes foram cuidadosamente planejadas para criar uma experiência de usuário excepcional, performance otimizada e código maintível:
-
-*   **React 18 com TypeScript:** Escolhido pela tipagem estática robusta, componentes reutilizáveis, hooks modernos, e ecossistema maduro. TypeScript elimina erros em tempo de compilação e melhora significativamente a experiência de desenvolvimento.
-
-*   **Tailwind CSS:** Framework utility-first que permite desenvolvimento rápido, consistência visual automática, bundle size otimizado, e customização flexível. Elimina CSS desnecessário e garante design system coerente.
-
-*   **Arquitetura de Componentes:** Estrutura modular com componentes especializados (Header, PostCard, UploadArea) que promove reutilização, testabilidade e manutenção simplificada.
-
-*   **Hooks Customizados:** Implementação de hooks especializados (useTheme, usePosts, useNotification) para encapsular lógica complexa, facilitar reutilização e melhorar organização do código.
-
-*   **Design System Consistente:** Paleta de cores gradiente (purple → pink → orange), tipografia Inter, componentes com estados visuais claros, e animações sutis que melhoram feedback visual.
-
-*   **Responsividade Mobile-First:** Design que prioriza dispositivos móveis, com breakpoints bem definidos e experiência otimizada para touch interfaces.
-
-*   **Tema Escuro Inteligente:** Implementação de dark mode com persistência local, detecção automática de preferências do sistema, e transições suaves entre temas.
-
-## ✨ Funcionalidades Detalhadas (com Casos de Uso)
-
-InstaBytes oferece um conjunto abrangente de funcionalidades modernas projetadas para maximizar engajamento e facilitar criação de conteúdo de alta qualidade:
-
-### 1. Upload Inteligente de Imagens com IA
-
-*   **Propósito:** Permitir upload de imagens com geração automática de descrições por IA, eliminando a necessidade de criação manual de legendas
-*   **Funcionalidades:**
-    *   Upload via drag & drop ou seleção de arquivo
-    *   Validação automática de formato e tamanho
-    *   Processamento em tempo real com Google Gemini
-    *   Feedback visual durante processamento
-    *   Geração de descrições contextualmente relevantes
-*   **Casos de Uso:**
-    *   **Usuário Casual:** Carrega foto de viagem sem saber como descrevê-la, recebe automaticamente: "Vista deslumbrante do pôr do sol sobre montanhas cobertas de neve, criando reflexos dourados no lago cristalino abaixo"
-    *   **Criador de Conteúdo:** Upload em massa de fotos de produtos, cada uma recebe descrição única e detalhada automaticamente
-    *   **Usuário com Deficiência Visual:** Imagens recebem descrições precisas que podem ser lidas por screen readers
-
-### 2. Interface Social Moderna e Interativa
-
-*   **Propósito:** Facilitar interações sociais autênticas com design intuitivo e responsivo
-*   **Funcionalidades:**
-    *   Sistema de curtidas com animações fluidas
-    *   Comentários em tempo real com threads
-    *   Compartilhamento nativo e via clipboard
-    *   Modal de visualização imersiva
-    *   Feed infinito com lazy loading
-*   **Casos de Uso:**
-    *   **Influencer:** Monitora engajamento em tempo real, responde comentários diretamente no modal expandido
-    *   **Usuário Social:** Navega feed fluidamente, curte e comenta sem interrupções na experiência
-
-### 3. Edição e Gerenciamento de Posts
-
-*   **Propósito:** Permitir controle total sobre conteúdo publicado com interface intuitiva
-*   **Funcionalidades:**
-    *   Edição in-line de descrições
-    *   Confirmação visual para ações destrutivas
-    *   Histórico de modificações
-    *   Validação de conteúdo em tempo real
-*   **Casos de Uso:**
-    *   **Correção Rápida:** Usuário identifica erro na descrição, edita diretamente no post sem recarregar página
-    *   **Curadoria de Conteúdo:** Admin modera posts inadequados com confirmação dupla antes da exclusão
-
-### 4. Experiência Responsiva e Acessível
-
-*   **Propósito:** Garantir usabilidade excepcional em todos os dispositivos e para todos os usuários
-*   **Funcionalidades:**
-    *   Design mobile-first com breakpoints otimizados
-    *   Suporte completo a screen readers
-    *   Navegação por teclado
-    *   Contraste adequado em modo claro/escuro
-    *   Feedback tátil em dispositivos móveis
-*   **Casos de Uso:**
-    *   **Usuário Mobile:** Experiência completa em smartphone com gestos touch otimizados
-    *   **Usuário com Necessidades Especiais:** Navegação completa via teclado e descrições de IA lidas por tecnologias assistivas
-
-## 🛠️ Tech Stack Detalhado
-
-| Categoria | Tecnologia | Versão Específica | Propósito no Projeto | Justificativa da Escolha |
-|-----------|------------|-------------------|----------------------|-------------------------|
-| **Frontend Core** | **React** | 18.3.1 | Framework principal para construção da interface reativa e componentizada | Ecossistema maduro, performance otimizada com React 18, hooks modernos, suspense, e concurrent features |
-| **Linguagem** | **TypeScript** | 5.0+ | Tipagem estática, IntelliSense avançado, e redução de bugs em runtime | Type safety, melhor DX, refactoring seguro, e documentação automática via tipos |
-| **Estilização** | **Tailwind CSS** | 3.4.17 | Framework utility-first para estilização rápida e consistente | Bundle size otimizado, design system integrado, responsividade nativa, e desenvolvimento ágil |
-| **Build Tool** | **Vite** | 5.3.1 | Bundler moderno com HMR ultrarrápido e build otimizado | Startup instantâneo, HMR nativo, ESM support, e builds de produção otimizados |
-| **HTTP Client** | **Axios** | 1.6.0 | Cliente HTTP com interceptors, timeout, e error handling robusto | Request/response interceptors, error handling centralizado, timeout configurável, e retry automático |
-| **Ícones** | **Lucide React** | 0.263.1 | Biblioteca de ícones moderna, consistente e tree-shakeable | Ícones vetoriais otimizados, bundle size mínimo, design coerente, e fácil customização |
-| **Runtime** | **Node.js** | 18+ | Ambiente de execução JavaScript para desenvolvimento e build | Performance V8, ESM support nativo, ecosystem npm robusto, e compatibilidade moderna |
-| **Linting** | **ESLint** | 8.57.0 | Análise estática de código para manter qualidade e consistência | Rules customizáveis, integração IDE, auto-fix, e padrões de código consistentes |
-| **CSS Processing** | **PostCSS** | 8.5.6 | Processamento avançado de CSS com autoprefixer e otimizações | Autoprefixing automático, otimizações de produção, e compatibilidade cross-browser |
-| **Deploy** | **Vercel** | N/A | Plataforma de deploy com CI/CD automático e CDN global | Deploy automático do Git, preview deployments, edge functions, e performance otimizada |
-
-### Arquitetura Tecnológica Justificada
-
-**Stack Modern React:** A combinação React 18 + TypeScript + Vite representa o estado da arte em desenvolvimento frontend, oferecendo developer experience excepcional, performance de runtime otimizada, e maintabilidade a longo prazo. React 18 introduz concurrent features que melhoram responsividade, TypeScript elimina categorias inteiras de bugs, e Vite oferece feedback instantâneo durante desenvolvimento.
-
-**Integração de IA:** A integração com Google Gemini via API REST permite processamento avançado de imagens sem complexidade adicional no frontend, mantendo a aplicação leve enquanto oferece capacidades de IA de última geração.
-
-## 📂 Estrutura Detalhada do Código-Fonte
+A aplicação segue uma arquitetura de separação frontend/backend com integração de serviços de IA:
 
 ```
-InstaBytes-Frontend/
-├── 📄 index.html                      # HTML principal com SEO, PWA, e meta tags otimizadas
-├── 🎨 tailwind.config.js              # Configuração Tailwind com tema customizado e animações
-├── ⚙️ vite.config.ts                  # Configuração Vite com otimizações e plugins
-├── 🔧 package.json                    # Dependências, scripts, e metadados do projeto
-├── 📁 src/                            # Código-fonte principal da aplicação
-│   ├── 🚀 main.tsx                    # Entry point com Error Boundary e configuração inicial
-│   ├── 📱 App.tsx                     # Componente principal com state management e routing lógico
-│   ├── 🎨 index.css                   # Estilos globais, animações, e tema dark/light
-│   ├── 📁 components/                 # Componentes React reutilizáveis e especializados
-│   │   ├── 🎯 Header.tsx              # Cabeçalho com navegação, tema, e upload button
-│   │   ├── 📸 UploadArea.tsx          # Área de upload com drag&drop e feedback visual
-│   │   ├── 📝 PostCard.tsx            # Card de post com interações sociais completas
-│   │   ├── 🔍 PostModal.tsx           # Modal expandido para visualização detalhada
-│   │   ├── 🔔 Notification.tsx        # Sistema de notificações toast com auto-dismiss
-│   │   ├── ⚡ LoadingSpinner.tsx      # Spinner animado com indicadores de progresso
-│   │   ├── 🎭 EmptyState.tsx          # Estado vazio com call-to-action engajante
-│   │   ├── ⬆️ ScrollToTopButton.tsx   # Botão de scroll com smooth animation
-│   │   └── ✅ ConfirmationModal.tsx   # Modal de confirmação para ações críticas
-│   ├── 🪝 hooks/                      # Hooks customizados para lógica reutilizável
-│   │   ├── 🎨 useTheme.ts             # Gerenciamento de tema com persistência local
-│   │   ├── 📊 usePosts.ts             # State management completo para posts e API calls
-│   │   └── 🔔 useNotification.ts      # Sistema de notificações com queue e auto-hide
-│   ├── 🎯 types/                      # Definições TypeScript centralizadas
-│   │   └── 📋 index.ts                # Interfaces, types, e props definitions
-│   └── 🖼️ assets/                     # Assets estáticos otimizados
-│       └── ⚛️ react.svg               # Ícones e imagens da aplicação
-├── 📁 public/                         # Assets públicos servidos estaticamente
-│   ├── 🌟 vite.svg                    # Favicon e ícones PWA
-│   └── 📱 manifest.json               # Manifest PWA com configurações completas
-├── 🔧 vercel.json                     # Configuração de deploy Vercel com otimizações
-├── 📜 tsconfig.json                   # Configuração TypeScript com strict mode
-├── 🔍 eslint.config.js                # Rules ESLint customizadas para qualidade
-└── 📚 README.md                       # Documentação completa do projeto
+Usuário
+  → React Frontend (TypeScript + Tailwind + Vite)
+    → Node.js Backend (Express + API REST)
+      ├── Google Gemini (análise de imagem → geração de descrição)
+      ├── Cloud Storage (armazenamento de imagens)
+      └── Banco de Dados (posts, comentários, curtidas)
 ```
 
-**Detalhamento dos Componentes:**
+### Fluxo de Upload com IA
 
-- **`App.tsx`:** Orquestrador principal que gerencia estado global, routing lógico, e coordena interações entre componentes
-- **`components/`:** Biblioteca de componentes React especializados, cada um com responsabilidade única e alta reutilização
-- **`hooks/`:** Lógica de negócio encapsulada em hooks customizados para separação de concerns e testabilidade
-- **`types/`:** Sistema de tipos TypeScript centralizado garantindo type safety em toda aplicação
-
-### Sistema de Design Modular
-
-Cada componente segue padrões consistentes de design e implementação:
-
-```typescript
-// Exemplo: Estrutura padrão de componente
-interface ComponentProps {
-  // Props tipadas com JSDoc
-}
-
-const Component: React.FC<ComponentProps> = ({ props }) => {
-  // Hooks locais
-  // Event handlers
-  // Render com className sistemático
-}
-
-export default Component;
+```
+Usuário seleciona imagem (drag & drop / file picker)
+  → Frontend valida formato e tamanho (max 5MB)
+    → Backend recebe e armazena imagem
+      → Google Gemini analisa conteúdo visual
+        → Descrição gerada retorna ao frontend
+          → Post publicado com legenda automática
 ```
 
-## 📋 Pré-requisitos Avançados
+### Componentes Principais
 
-Para desenvolvimento e execução local do InstaBytes, são necessários os seguintes requisitos de sistema:
+| Componente              | Arquivo                 | Responsabilidade                                           |
+| ----------------------- | ----------------------- | ---------------------------------------------------------- |
+| **App**                 | `App.tsx`               | Orquestrador principal, estado global e routing lógico     |
+| **Header**              | `Header.tsx`            | Navegação, toggle de tema e botão de upload                |
+| **UploadArea**          | `UploadArea.tsx`        | Drag & drop, validação e feedback de processamento IA      |
+| **PostCard**            | `PostCard.tsx`          | Card com curtidas, comentários, compartilhamento e edição  |
+| **PostModal**           | `PostModal.tsx`         | Visualização imersiva expandida                            |
+| **useTheme**            | `hooks/useTheme.ts`    | Gerenciamento de tema com persistência local               |
+| **usePosts**            | `hooks/usePosts.ts`    | State management para posts e chamadas à API               |
+| **useNotification**     | `hooks/useNotification.ts` | Sistema de notificações com fila e auto-hide           |
 
-**Para Usuários Finais:**
-*   **Navegador Moderno:** Chrome 90+, Firefox 88+, Safari 14+, ou Edge 90+ com suporte completo a ES2020+
-*   **JavaScript Habilitado:** Essencial para funcionamento da SPA React
-*   **Conexão de Internet:** Necessária para API calls e carregamento de imagens
+---
 
-**Para Desenvolvimento:**
-*   **Node.js:** Versão 18.0.0+ (LTS recomendado) com suporte a ESM e top-level await
-*   **NPM:** Versão 8.0.0+ ou Yarn 1.22+ para gerenciamento de dependências
-*   **Git:** Versão 2.x para controle de versão e clonagem do repositório
-*   **Editor de Código:** VS Code recomendado com extensões TypeScript e ESLint
-*   **Sistema Operacional:** Windows 10+, macOS 10.15+, ou Linux (Ubuntu 20.04+)
+## Estrutura do Projeto
 
-**Extensões VS Code Recomendadas:**
-*   TypeScript e JavaScript Language Features
-*   ESLint para análise de código
-*   Tailwind CSS IntelliSense
-*   Auto Rename Tag
-*   Prettier para formatação automática
+```
+Instabytes-Front-End/
+├── src/
+│   ├── main.tsx                   # Entry point com Error Boundary
+│   ├── App.tsx                    # Componente principal
+│   ├── index.css                  # Estilos globais, animações, dark/light
+│   ├── components/
+│   │   ├── Header.tsx             # Navegação e toggle de tema
+│   │   ├── UploadArea.tsx         # Upload com drag & drop e feedback IA
+│   │   ├── PostCard.tsx           # Card de post com interações sociais
+│   │   ├── PostModal.tsx          # Modal de visualização expandida
+│   │   ├── Notification.tsx       # Toast notifications
+│   │   ├── LoadingSpinner.tsx     # Indicadores de progresso
+│   │   ├── EmptyState.tsx         # Estado vazio com CTA
+│   │   ├── ScrollToTopButton.tsx  # Botão de scroll suave
+│   │   └── ConfirmationModal.tsx  # Confirmação para ações destrutivas
+│   ├── hooks/
+│   │   ├── useTheme.ts            # Tema com persistência e detecção do sistema
+│   │   ├── usePosts.ts            # State management e API calls
+│   │   └── useNotification.ts     # Fila de notificações com auto-hide
+│   ├── types/
+│   │   └── index.ts               # Interfaces e type definitions
+│   └── assets/
+│       └── react.svg              # Ícones da aplicação
+├── public/
+│   ├── vite.svg                   # Favicon
+│   └── manifest.json              # Manifest PWA
+├── index.html                     # HTML principal com meta tags e SEO
+├── tailwind.config.js             # Tema customizado e animações
+├── vite.config.ts                 # Configuração Vite
+├── tsconfig.json                  # TypeScript strict mode
+├── eslint.config.js               # Rules ESLint customizadas
+├── vercel.json                    # Configuração de deploy
+├── package.json                   # Dependências e scripts
+└── LICENSE                        # Licença MIT
+```
 
-## 🚀 Guia de Instalação e Configuração Avançada
+---
 
-### Instalação Básica
+## Começando
 
-1.  **Clonar o Repositório:**
-    ```bash
-    git clone https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google.git
-    cd Instabytes-Front-End-Imersao-Alura-Google
-    ```
-
-2.  **Instalar Dependências:**
-    ```bash
-    npm install
-    # ou
-    yarn install
-    ```
-
-3.  **Configurar Variáveis de Ambiente:**
-    ```bash
-    # Criar arquivo .env.local
-    VITE_API_URL=http://localhost:3000
-    VITE_APP_NAME=InstaBytes
-    VITE_MAX_FILE_SIZE=5242880  # 5MB
-    ```
-
-4.  **Executar em Desenvolvimento:**
-    ```bash
-    npm run dev
-    # Aplicação estará disponível em http://localhost:8000
-    ```
-
-### Configuração de Produção
-
-Para builds de produção otimizados:
+### Pré-requisitos
 
 ```bash
-# Build para produção
+node --version  # v18 ou superior
+npm --version   # v8 ou superior
+```
+
+### Instalação
+
+1. **Clone o repositório**
+
+```bash
+git clone https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google.git
+cd Instabytes-Front-End-Imersao-Alura-Google
+```
+
+2. **Instale as dependências**
+
+```bash
+npm install
+```
+
+### Configuração
+
+Crie o arquivo `.env.local` na raiz do projeto:
+
+```bash
+VITE_API_URL=http://localhost:3000
+VITE_APP_NAME=InstaBytes
+VITE_MAX_FILE_SIZE=5242880
+```
+
+### Uso Local
+
+**Modo desenvolvimento:**
+
+```bash
+npm run dev
+```
+
+Acesse: `http://localhost:8000/`
+
+**Build de produção:**
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## Scripts Disponíveis
+
+```bash
+# Desenvolvimento com HMR
+npm run dev
+
+# Build de produção
 npm run build
 
 # Preview do build local
 npm run preview
 
-# Análise do bundle (opcional)
-npx vite-bundle-analyzer
+# Lint
+npm run lint
+
+# Testes
+npm test
+
+# Testes com cobertura
+npm run test:coverage
 ```
-
-### Configuração de Backend (Opcional)
-
-Para desenvolvimento completo, configure o backend correspondente:
-
-```bash
-# Em diretório separado
-git clone [URL_DO_BACKEND]
-cd instabytes-backend
-npm install
-npm run dev  # Backend em http://localhost:3000
-```
-
-## ⚙️ Uso Avançado e Exemplos
-
-### Navegação e Funcionalidades Principais
-
-1.  **Upload de Imagens com IA:**
-    - Arraste imagens para a área de upload ou clique para selecionar
-    - Acompanhe o processamento IA em tempo real
-    - Edite descrições geradas conforme necessário
-
-2.  **Interações Sociais:**
-    - Curta posts com feedback visual animado
-    - Adicione comentários com validação em tempo real
-    - Compartilhe via native share API ou clipboard
-
-3.  **Personalização da Interface:**
-    - Alterne entre modo claro/escuro no header
-    - Navegação responsiva adapta-se automaticamente ao dispositivo
-    - Scroll infinito carrega conteúdo sob demanda
-
-### Customização Avançada
-
-**Personalização de Tema:**
-
-```css
-/* tailwind.config.js - Cores customizadas */
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          primary: '#8B5CF6',
-          secondary: '#EC4899',
-          accent: '#F59E0B'
-        }
-      }
-    }
-  }
-}
-```
-
-**Componente Personalizado:**
-
-```typescript
-// Exemplo: Extensão do PostCard
-interface CustomPostCardProps extends PostCardProps {
-  showAnalytics?: boolean;
-  customTheme?: 'minimal' | 'vibrant';
-}
-
-const CustomPostCard: React.FC<CustomPostCardProps> = ({
-  showAnalytics = false,
-  customTheme = 'vibrant',
-  ...props
-}) => {
-  const themeClasses = customTheme === 'minimal' 
-    ? 'bg-gray-50 dark:bg-gray-900' 
-    : 'bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20';
-
-  return (
-    <div className={`${themeClasses} rounded-xl`}>
-      <PostCard {...props} />
-      {showAnalytics && (
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-          <span className="text-sm text-gray-500">Views: 1.2k • Reach: 890</span>
-        </div>
-      )}
-    </div>
-  );
-};
-```
-
-**Integração com API Externa:**
-
-```typescript
-// hooks/useExternalAPI.ts
-import { useState, useCallback } from 'react';
-
-export const useExternalAPI = () => {
-  const [loading, setLoading] = useState(false);
-
-  const shareToSocialMedia = useCallback(async (post: Post, platform: string) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/share/${platform}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          imageUrl: post.imgUrl,
-          description: post.descricao,
-          platform
-        })
-      });
-      
-      return await response.json();
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  return { shareToSocialMedia, loading };
-};
-```
-
-## 🧪 Estratégia de Testes e Qualidade de Código
-
-### Tipos de Testes Implementados
-
-1.  **Testes de Componentes:**
-    *   **Propósito:** Verificar renderização correta, props handling, e interações do usuário
-    *   **Ferramentas:** React Testing Library, Jest, e User Event para simulação de interações
-    *   **Cobertura:** Todos os componentes principais com cenários de success e error
-    *   **Foco:** Comportamento do usuário final, accessibility, e edge cases
-
-2.  **Testes de Hooks Customizados:**
-    *   **Propósito:** Validar lógica de estado, efeitos colaterais, e API calls
-    *   **Ferramentas:** @testing-library/react-hooks para isolamento de hooks
-    *   **Foco:** State transitions, error handling, e cleanup correto
-
-3.  **Testes de Integração:**
-    *   **Propósito:** Verificar fluxos completos de usuário end-to-end
-    *   **Ferramentas:** Cypress para automação de browser real
-    *   **Cenários:** Upload de imagem → Processamento IA → Publicação → Interações
-
-4.  **Testes Visuais e de Responsividade:**
-    *   **Propósito:** Garantir consistência visual e adaptação a diferentes viewports
-    *   **Ferramentas:** Storybook para component library e Percy para visual regression
-    *   **Foco:** Design system, dark mode, e breakpoints responsivos
-
-### Qualidade de Código e CI/CD
-
-*   **Linting Avançado:** ESLint com rules customizadas para React/TypeScript, Prettier para formatação consistente
-*   **Type Safety:** TypeScript em modo strict com verificação rigorosa de tipos
-*   **Pre-commit Hooks:** Husky + lint-staged para validação automática antes de commits
-*   **CI/CD Pipeline:** GitHub Actions para testes automáticos, build verification, e deploy
-*   **Code Coverage:** Monitoramento de cobertura com thresholds mínimos de 80%
-*   **Bundle Analysis:** Análise automática de bundle size e performance metrics
-
-**Configuração de Teste:**
-
-```json
-// package.json - Scripts de teste
-{
-  "scripts": {
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage",
-    "test:e2e": "cypress run",
-    "test:visual": "percy exec -- cypress run"
-  }
-}
-```
-
-## 🚢 Escalabilidade
-
-A arquitetura do InstaBytes é projetada para escalabilidade horizontal e vertical:
-
-*   **Frontend Scaling:**
-    *   CDN global da Vercel com edge caching
-    *   Static assets distribuídos geograficamente
-    *   Lazy loading e code splitting reduzem initial bundle
-    *   Service Worker para caching inteligente (futuro)
-
-*   **Performance Optimizations:**
-    *   Image optimization automática via Vercel Image API
-    *   Preloading de recursos críticos
-    *   Bundle size monitoring com alerts automáticos
-    *   Core Web Vitals tracking contínuo
-
-*   **Monitoramento e Observabilidade:**
-    *   Real User Monitoring (RUM) via Vercel Analytics
-    *   Error tracking e performance metrics
-    *   A/B testing capabilities para feature rollouts
-    *   Alertas automáticos para degradação de performance
-
-## 📜 Licença e Aspectos Legais
-
-O projeto **InstaBytes** é distribuído sob a **Licença MIT**, uma das licenças de software livre mais permissivas e amplamente adotadas na indústria.
-
-### Principais Implicações da Licença MIT:
-
-*   **Uso Comercial:** Permitido uso em projetos comerciais sem restrições
-*   **Modificação:** Liberdade total para modificar o código-fonte conforme necessidades
-*   **Distribuição:** Pode ser redistribuído livremente, incluindo em produtos proprietários
-*   **Sublicenciamento:** Permite sublicenciar sob termos diferentes se necessário
-*   **Uso Privado:** Uso interno em organizações sem obrigação de divulgação
-*   **Sem Garantias:** Software fornecido "como está" sem garantias expressas ou implícitas
-*   **Atribuição Obrigatória:** Deve manter o aviso de copyright e licença em todas as cópias
-
-Para o texto completo da licença, consulte o arquivo `LICENSE` no repositório:
-
-[📜 Visualizar Licença MIT Completa](./LICENSE)
-
-**Considerações Legais Adicionais:**
-*   Integração com APIs terceirizadas (Google Gemini) sujeita aos termos de serviço respectivos
-*   Dados de usuário processados conforme políticas de privacidade aplicáveis
-*   Uso de bibliotecas open source com licenças compatíveis verificadas
-
-## ❓ FAQ (Perguntas Frequentes)
-
-**P: O que é o InstaBytes e como ele se diferencia de outras redes sociais?**
-**R:** O InstaBytes é uma plataforma social focada em compartilhamento de imagens que utiliza inteligência artificial avançada (Google Gemini) para gerar automaticamente descrições criativas e contextualmente relevantes para suas fotos. Diferente de outras plataformas, elimina a dificuldade de criar legendas envolventes, democratizando a criação de conteúdo de alta qualidade.
-
-**P: Como funciona a geração automática de legendas por IA?**
-**R:** Quando você faz upload de uma imagem, ela é enviada para a API do Google Gemini que analisa o conteúdo visual, identifica objetos, cenários, emoções e contexto, gerando uma descrição textual criativa e envolvente. Todo o processo acontece em tempo real, geralmente em poucos segundos.
-
-**P: É necessário pagar para usar o InstaBytes?**
-**R:** Não, o InstaBytes é uma aplicação open source e completamente gratuita. Você pode acessar a versão online, fazer fork do código, ou executar localmente sem custos. As únicas limitações podem vir dos serviços de IA utilizados (Google Gemini) conforme seus próprios limites de uso.
-
-**P: Quais formatos de imagem são suportados?**
-**R:** O InstaBytes suporta os principais formatos de imagem: JPEG, PNG, GIF, e WEBP. O tamanho máximo por arquivo é de 5MB para garantir upload rápido e processamento eficiente pela IA.
-
-**P: Como posso contribuir para o desenvolvimento do projeto?**
-**R:** Você pode contribuir de várias formas: reportando bugs via GitHub Issues, sugerindo novas funcionalidades, fazendo fork e criando Pull Requests com melhorias, ou ajudando na documentação. O projeto segue práticas de código aberto e welcomes all contributions.
-
-**P: O InstaBytes funciona offline?**
-**R:** Parcialmente. A interface principal funciona offline após o primeiro carregamento, mas funcionalidades que dependem de API (upload de imagens, geração de IA, sincronização de posts) requerem conexão de internet. Implementação de Service Worker para melhor suporte offline está planejada.
-
-**P: É possível integrar o InstaBytes com outras redes sociais?**
-**R:** Atualmente o InstaBytes oferece compartilhamento básico via Web Share API. Integração direta com APIs de outras redes sociais (Instagram, Twitter, Facebook) está no roadmap de desenvolvimento futuro.
-
-**P: Como são tratados os dados de privacidade dos usuários?**
-**R:** O InstaBytes processa apenas os dados necessários para funcionamento (imagens para análise de IA, posts e comentários). Não armazena dados pessoais sensíveis e segue melhores práticas de privacy by design. Images são processadas temporariamente pela IA e metadados são armazenados de forma segura.
-
-## 📞 Contato e Suporte
-
-Para dúvidas técnicas, reportar problemas, sugerir melhorias, ou colaborar no desenvolvimento do InstaBytes, utilize os seguintes canais:
-
-*   **GitHub Issues:**
-    Canal preferencial para bugs, feature requests, e discussões técnicas sobre o projeto.
-    *   [🐛 Reportar Bug](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/issues/new?template=bug_report.md)
-    *   [✨ Sugerir Feature](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/issues/new?template=feature_request.md)
-    *   [💬 Ver Discussões Abertas](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/issues)
-
-*   **Pull Requests:**
-    Para contribuições diretas de código, melhorias, e correções.
-    *   [🔧 Abrir Pull Request](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/compare)
-    *   [📋 Ver PRs Pendentes](https://github.com/ESousa97/Instabytes-Front-End-Imersao-Alura-Google/pulls)
-
-*   **Contato Direto (Desenvolvedor Principal):**
-    Para questões específicas, colaborações, ou contato profissional.
-    *   **GitHub:** [@ESousa97](https://github.com/ESousa97)
-    *   **LinkedIn:** [José Enoque Sousa](https://www.linkedin.com/in/enoque-sousa-bb89aa168/)
-    *   **Portfolio:** [Projetos e Experiências](https://github.com/ESousa97)
 
 ---
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=social" alt="GitHub Stars">
-  <img src="https://img.shields.io/github/forks/ESousa97/Instabytes-Front-End-Imersao-Alura-Google?style=social" alt="GitHub Forks">
-</p>
+## Qualidade e Governança
 
-<p align="center">
-  <em>Desenvolvido com ❤️ por José Enoque Sousa - Revolucionando redes sociais através da democratização de conteúdo de qualidade com Inteligência Artificial</em>
-</p>
+O projeto adota práticas de governança para manter a qualidade do código:
 
-Agradecemos seu interesse no InstaBytes e estamos ansiosos para ver como a comunidade utilizará e expandirá esta plataforma para criar experiências ainda mais incríveis de compartilhamento social potencializado por IA.
+- **CI** — Pipeline com lint, testes, build e cobertura via GitHub Actions
+- **Quality** — Pipeline separado para análise de qualidade de código
+- **Security** — Análise CodeQL semanal e em cada push/PR
+- **Coverage** — Relatórios integrados ao Codecov
+- **Type Safety** — TypeScript em strict mode com verificação rigorosa
 
-> ✨ **Criado em:** 24 de nov. de 2024 às 21:55 - Transformando a criação de conteúdo visual através da inteligência artificial
+---
+
+## Deploy
+
+### Vercel (Produção)
+
+Deploy contínuo automatizado via integração GitHub. Cada push na branch `main` aciona build e deploy. Pull Requests geram URLs de preview automáticas.
+
+O `vercel.json` configura otimizações específicas para a SPA React.
+
+---
+
+## FAQ
+
+<details>
+<summary><strong>Como funciona a geração de legendas por IA?</strong></summary>
+
+Ao fazer upload de uma imagem, ela é enviada para a API do Google Gemini que analisa o conteúdo visual — objetos, cenários, emoções e contexto — e gera uma descrição textual criativa. O processo acontece em tempo real, geralmente em poucos segundos.
+</details>
+
+<details>
+<summary><strong>Quais formatos de imagem são suportados?</strong></summary>
+
+JPEG, PNG, GIF e WEBP com tamanho máximo de 5MB por arquivo para garantir upload rápido e processamento eficiente pela IA.
+</details>
+
+<details>
+<summary><strong>A aplicação funciona offline?</strong></summary>
+
+A interface principal funciona offline após o primeiro carregamento, mas funcionalidades que dependem de API (upload, geração de IA, sincronização de posts) requerem conexão.
+</details>
+
+<details>
+<summary><strong>É necessário configurar o backend separadamente?</strong></summary>
+
+Sim. Este repositório contém apenas o frontend. O backend (Node.js/Express) deve ser configurado em repositório separado com a integração Google Gemini e banco de dados.
+</details>
+
+---
+
+## Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+```
+MIT License - você pode usar, copiar, modificar e distribuir este código.
+```
+
+---
+
+## Contato
+
+**José Enoque Costa de Sousa**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/enoque-sousa-bb89aa168/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/ESousa97)
+[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=flat&logo=todoist&logoColor=white)](https://enoquesousa.vercel.app)
+
+---
+
+<div align="center">
+
+**[⬆ Voltar ao topo](#instabytes)**
+
+Feito com ❤️ por [José Enoque](https://github.com/ESousa97)
+
+**Status do Projeto:** Archived — Sem novas atualizações
+
+</div>
